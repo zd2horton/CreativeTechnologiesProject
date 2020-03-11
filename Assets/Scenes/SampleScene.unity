@@ -398,6 +398,8 @@ GameObject:
   - component: {fileID: 1199597063}
   - component: {fileID: 1199597065}
   - component: {fileID: 1199597064}
+  - component: {fileID: 1199597067}
+  - component: {fileID: 1199597066}
   m_Layer: 0
   m_Name: MapGen
   m_TagString: Untagged
@@ -476,3 +478,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textureNoiseRenderer: {fileID: 48803534}
+--- !u!114 &1199597066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1199597062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19bddb6baed44ac43b03c0b35e1c14ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1199597067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1199597062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83e353e166dac8849ba2f61880a3f8d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minRoomWidth: 0
+  minRoomHeight: 0
+  minLeafSize: 0
