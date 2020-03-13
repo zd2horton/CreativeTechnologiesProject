@@ -8,6 +8,11 @@ public class LeafSplit : MonoBehaviour
     public float minRoomWidth, minRoomHeight, minLeafSize;
     bool completedSplit;
 
+    private void Start()
+    {
+        minLeafSize = 5;
+    }
+
     public bool DirectionChoice(Leaf currentLeaf, ref Leaf leftChild, ref Leaf rightChild)
     {
         string splitDirection = "";
@@ -93,36 +98,36 @@ public class LeafSplit : MonoBehaviour
 
         else
         {
-            //find value to split by through using minimum and maximum split sizes available
-            float splitBy = Random.Range(minLeafSize, maxLeafSize);
-            Debug.Log(splitBy);
+                //find value to split by through using minimum and maximum split sizes available
+                float splitBy = Random.Range(minLeafSize, maxLeafSize);
+                Debug.Log(splitBy);
 
-            if (cutDirection == "Horizontal")
-            {
-                //create children based on result, same width but reduced height
-                lChild.leafPosition = currentLeaf.leafPosition;
-                lChild.leafWidth = currentLeaf.leafWidth;
-                lChild.leafHeight = splitBy;
+                if (cutDirection == "Horizontal")
+                {
+                    //create children based on result, same width but reduced height
+                    lChild.leafPosition = currentLeaf.leafPosition;
+                    lChild.leafWidth = currentLeaf.leafWidth;
+                    lChild.leafHeight = splitBy;
 
-                rChild.leafPosition = new Vector2(currentLeaf.leafPosition.x, currentLeaf.leafPosition.y + splitBy);
-                rChild.leafWidth = currentLeaf.leafWidth;
-                rChild.leafHeight = currentLeaf.leafHeight - splitBy;
+                    rChild.leafPosition = new Vector2(currentLeaf.leafPosition.x, currentLeaf.leafPosition.y + splitBy);
+                    rChild.leafWidth = currentLeaf.leafWidth;
+                    rChild.leafHeight = currentLeaf.leafHeight - splitBy;
 
-            }
+                }
 
-            else if (cutDirection == "Vertical")
-            {
-                //create children based on result, same height but reduced width
-                lChild.leafPosition = currentLeaf.leafPosition;
-                lChild.leafHeight = currentLeaf.leafHeight;
-                lChild.leafWidth = splitBy;
+                else if (cutDirection == "Vertical")
+                {
+                    //create children based on result, same height but reduced width
+                    lChild.leafPosition = currentLeaf.leafPosition;
+                    lChild.leafHeight = currentLeaf.leafHeight;
+                    lChild.leafWidth = splitBy;
 
-                rChild.leafPosition = new Vector3(currentLeaf.leafPosition.x + splitBy, currentLeaf.leafPosition.y);
-                rChild.leafHeight = currentLeaf.leafHeight;
-                rChild.leafWidth = currentLeaf.leafWidth - splitBy;
-            }
-
+                    rChild.leafPosition = new Vector3(currentLeaf.leafPosition.x + splitBy, currentLeaf.leafPosition.y);
+                    rChild.leafHeight = currentLeaf.leafHeight;
+                    rChild.leafWidth = currentLeaf.leafWidth - splitBy;
+                }
         }
+            
         return true;
     }
 }

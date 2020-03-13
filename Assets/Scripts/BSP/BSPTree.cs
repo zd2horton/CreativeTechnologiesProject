@@ -14,6 +14,7 @@ public class BSPTree : MonoBehaviour
     {
         partitioningTree = new List<Leaf>();
         splitting = gameObject.GetComponent<LeafSplit>();
+        
     }
 
     // Update is called once per frame
