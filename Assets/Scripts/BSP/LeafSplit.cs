@@ -5,12 +5,12 @@ using UnityEngine;
 public class LeafSplit : MonoBehaviour
 {
     //include halls for leaf
-    public float minRoomWidth, minRoomHeight, minLeafSize;
+    public float minLeafSize;
     bool completedSplit;
 
     private void Start()
     {
-        minLeafSize = 5;
+        minLeafSize = 1.2f;
     }
 
     public bool DirectionChoice(Leaf currentLeaf, ref Leaf leftChild, ref Leaf rightChild)

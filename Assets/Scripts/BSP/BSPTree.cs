@@ -5,15 +5,17 @@ using UnityEngine;
 public class BSPTree : MonoBehaviour
 {
     private List<Leaf> partitioningTree;
-    bool finished;
-    bool successfulSplit;
+    private List<Leaf> finishedTree;
+    bool finished, drawn, successfulSplit;
     LeafSplit splitting;
 
     // Start is called before the first frame update
     void Start()
     {
         partitioningTree = new List<Leaf>();
+        finishedTree = new List<Leaf>();
         splitting = gameObject.GetComponent<LeafSplit>();
+        drawn = false;
         
     }
 
@@ -30,8 +32,8 @@ public class BSPTree : MonoBehaviour
         {
             Leaf initialArea = new Leaf();
             initialArea.leafPosition = new Vector2 (0, 0);
-            initialArea.leafWidth = 100;
-            initialArea.leafHeight = 80;
+            initialArea.leafWidth = 1000;
+            initialArea.leafHeight = 1000;
             partitioningTree.Add(initialArea);
         }
 
@@ -54,6 +56,7 @@ public class BSPTree : MonoBehaviour
                     partitioningTree.Add(childL);
                     partitioningTree.Add(childR);
                     partitioningTree.Remove(partitioningTree[i]);
+                    finishedTree.Add(partitioningTree[i]);
                 }
 
                 else if (successfulSplit == false)
@@ -66,9 +69,10 @@ public class BSPTree : MonoBehaviour
             }
         }
 
-        if (finished == true)
+        if (finished == true && drawn == false)
         {
             Debug.DebugBreak();
+            TreeOutput();
         }
     }
 
@@ -86,5 +90,19 @@ public class BSPTree : MonoBehaviour
         //bitmap tree
 
         //output
+
+        foreach (Leaf leaftoAdd in partitioningTree)
+        {
+            finishedTree.Add(leaftoAdd);
+        }
+
+        foreach (Leaf leafToOutput in finishedTree)
+        {
+            GameObject newArea = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            newArea.transform.position = new Vector3(leafToOutput.leafPosition.x -500, 0, leafToOutput.leafPosition.y -500);
+            newArea.transform.localScale = new Vector3(leafToOutput.leafWidth, 1, leafToOutput.leafHeight);
+        }
+
+        drawn = true;
     }
 }
