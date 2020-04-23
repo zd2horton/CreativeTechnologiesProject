@@ -8,18 +8,18 @@ public class MapGenEditor : Editor
 {
     public override void OnInspectorGUI()
     {
-        MapGen mapGen = (MapGen)target;
+        MapGen mapGeneration = (MapGen)target;
         if (DrawDefaultInspector())
         {
-            if (mapGen.updating)
+            if (mapGeneration.updating)
             {
-                mapGen.DrawnMapGeneration();
+                mapGeneration.DrawnMapGeneration();
             }
         }
 
         if (GUILayout.Button("Generate Map"))
         {
-            mapGen.DrawnMapGeneration();
+            mapGeneration.DrawnMapGeneration();
         }
     }
 }
